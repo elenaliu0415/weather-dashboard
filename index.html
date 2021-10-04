@@ -16,79 +16,78 @@
     <div class="constainer">
       <div class="jumbotron jumbotron-fluid py-1">
         <div class="container">
-          <h1 class="display-5">Weather Dashboard</h1>
+          <h1 class="display-5 text-center">Weather Dashboard</h1>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12 col-lg-3">
-          <form id="search-form">
-          <div class="form-group">
-            <label for="search"><h3>Search for a City:</h3></label>
-            <input type="text" class="form-control" id="city-search" />
-            <button type="submit" class="btn btn-primary btn-block mt-3">
-              Search
-            </button>
-          </div>
+          <form id="search-form ">
+            <div class="form-group">
+              <label for="search"><h3>Search for a City:</h3></label>
+              <input type="text" class="form-control" id="city-search" />
+              <button type="submit" class="btn btn-primary btn-block mt-3">
+                Search
+              </button>
+            </div>
           </form>
+          <hr />
+          <div class="pb-3" id="searcn-history"></div>
         </div>
 
-        <div class="col-12 col-lg-9">
-          <div class="card" id="selected-result">
-            <div class="card-body">
-              <h5 class="card-title">City Name & current date</h5>
-              <p class="card-text">Temp:</p>
-              <p class="card-text">Wind:</p>
-              <p class="card-text">Humidity:</p>
-              <p class="card-text">UV Index:</p>
-            </div>
-          </div>
+        <div
+          id="forecastContainer"
+          class="col-12 col-lg-9"
+          style="display: none"
+        >
+          <div class="card" id="selected-result"></div>
 
-          <div class="py-2"><h4>5-Day Forecast</h4></div>
+          <div class="p-2"><h4>5-Day Forecast</h4></div>
+
           <div class="card-deck row" id="forecast-results">
             <div class="card col-md-6">
-              <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <img src="" alt="" />
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+              <div class="card-body forecast">
+                <h5 class="card-title date">Date</h5>
+                <img class="icon" src="" alt="" />
+                <p class="card-text temp">Temp:</p>
+                <p class="card-text wind">Wind:</p>
+                <p class="card-text humidity">Humidity:</p>
               </div>
             </div>
             <div class="card col-md-6">
-              <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <img src="" alt="" />
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+              <div class="card-body forecast">
+                <h5 class="card-title date">Date</h5>
+                <img class="icon" src="" alt="" />
+                <p class="card-text temp">Temp:</p>
+                <p class="card-text wind">Wind:</p>
+                <p class="card-text humidity">Humidity:</p>
               </div>
             </div>
             <div class="card col-md-6">
-              <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <img src="" alt="" />
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+              <div class="card-body forecast">
+                <h5 class="card-title date">Date</h5>
+                <img class="icon" src="" alt="" />
+                <p class="card-text temp">Temp:</p>
+                <p class="card-text wind">Wind:</p>
+                <p class="card-text humidity">Humidity:</p>
               </div>
             </div>
             <div class="card col-md-6">
-              <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <img src="" alt="" />
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+              <div class="card-body forecast">
+                <h5 class="card-title date">Date</h5>
+                <img class="icon" src="" alt="" />
+                <p class="card-text temp">Temp:</p>
+                <p class="card-text wind">Wind:</p>
+                <p class="card-text humidity">Humidity:</p>
               </div>
             </div>
             <div class="card col-md-6">
-              <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <img src="" alt="" />
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+              <div class="card-body forecast">
+                <h5 class="card-title date">Date</h5>
+                <img class="icon" src="" alt="" />
+                <p class="card-text temp">Temp:</p>
+                <p class="card-text wind">Wind:</p>
+                <p class="card-text humidity">Humidity:</p>
               </div>
             </div>
           </div>
