@@ -68,7 +68,7 @@ function displayCurrentWeather(result, city) {
   //   console.log(result);
   var cityName = city;
   var date = new Date(result.dt * 1000);
-  var date_str =
+  var dateStr =
     date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
   var iconSrc =
     "http://openweathermap.org/img/wn/" + result.weather[0].icon + ".png";
@@ -79,7 +79,7 @@ function displayCurrentWeather(result, city) {
   });
   var cityTitle = $("<h4>")
     .addClass("card-title")
-    .html(cityName + " " + "(" + date_str + ")");
+    .html(cityName + " " + "(" + dateStr + ")");
   var temp = $("<p>")
     .addClass("card-text")
     .html("Temp: " + result.temp + "°F");
@@ -89,12 +89,30 @@ function displayCurrentWeather(result, city) {
   var humidity = $("<p>")
     .addClass("card-text")
     .html("Humidity: " + result.humidity + " %");
+
+  var spanUVI = $("<span>").html(result.uvi);
+
   var uvi = $("<p>")
     .addClass("card-text")
-    .html("UV Index: " + result.uvi);
+    .html("UV Index: ");
+
+  uvi.append(spanUVI);
+
   var cityResult = $("<div>")
     .addClass("card-body")
     .append(cityTitle, temp, wind, humidity, uvi);
+
+    if (result.uvi >= 0 && result.uvi <= 2) {
+        spanUVI.addClass("low");
+      } else if (result.uvi >= 3 && result.uvi <= 5) {
+          spanUVI.addClass("moderate");
+      } else if (result.uvi >= 6 && result.uvi <= 7) {
+          spanUVI.addClass("high");
+      } else if (result.uvi >= 8 && result.uvi <= 10) {
+          spanUVI.addClass("very-high");
+      } else if (result.uvi > 11){
+          spanUVI.addClass("extreme");
+      }
 
   selectedCityResult.append(cityResult);
   cityTitle.append(iconImg);
@@ -108,11 +126,10 @@ function displayForecast(results) {
     var iconSrc =
       "http://openweathermap.org/img/wn/" + result.weather[0].icon + ".png";
     var forecastCard = $(".forecast").eq(i - 1);
-
-    var date_str =
+    var dateStr =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-    forecastCard.find(".date").text(date_str);
 
+    forecastCard.find(".date").text(dateStr);
     forecastCard.find(".icon").attr("src", iconSrc);
     forecastCard.find(".temp").text("Temp: " + result.temp.day + "°F");
     forecastCard.find(".wind").text("Wind: " + result.wind_speed + " MPH");
@@ -121,9 +138,6 @@ function displayForecast(results) {
 }
 
 function displayButtons() {
-  if (searchHistory == null) {
-    localStorage.setItem("searchHistory", JSON.stringify([]));
-  }
   searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
   searchHistoryContainer.empty();
@@ -142,6 +156,10 @@ function handleHistoryClick() {
   displayButtons();
   searchCity(this.textContent);
 }
+
+if (searchHistory == null) {
+  localStorage.setItem("searchHistory", JSON.stringify([]));
+}
 // add event listener for form submit button
-form.on("click", handleFormSubmit);
+form.on("submit", handleFormSubmit);
 searchHistoryContainer.on("click", ".btn-search", handleHistoryClick);
