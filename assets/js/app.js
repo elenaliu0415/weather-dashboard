@@ -104,11 +104,11 @@ function displayCurrentWeather(result, city) {
 
     if (result.uvi >= 0 && result.uvi <= 2) {
         spanUVI.addClass("low");
-      } else if (result.uvi >= 3 && result.uvi <= 5) {
+      } else if (result.uvi > 2 && result.uvi <= 5) {
           spanUVI.addClass("moderate");
-      } else if (result.uvi >= 6 && result.uvi <= 7) {
+      } else if (result.uvi > 5 && result.uvi <= 7) {
           spanUVI.addClass("high");
-      } else if (result.uvi >= 8 && result.uvi <= 10) {
+      } else if (result.uvi > 7 && result.uvi <= 10) {
           spanUVI.addClass("very-high");
       } else if (result.uvi > 11){
           spanUVI.addClass("extreme");
